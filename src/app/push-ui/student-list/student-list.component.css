@@ -1,0 +1,135 @@
+.container-fluid {
+  margin-top: 12px;
+}
+
+.my-custom-scrollbar {
+  position: relative;
+  height: 120px;
+  overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+  display: block;
+}
+
+@media screen and (min-width: 642px) {
+  #search {
+    margin-right: 2px;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .container-fluid {
+    padding-left: 5px;
+
+  }
+}
+
+#table {
+  font-size: 1.2rem;
+}
+
+.table-wrapper {
+  /* max-height: 16rem; */
+  /* margin-top: 8px; */
+  /* padding-right: 0px; */
+}
+#table-data-id{
+  padding-right:0px; 
+}
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  border: 1px solid black;
+  top: 0;
+  left: 0;
+  height: 35px;
+  width: 35px;
+  border-radius: 75%;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input~.checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked~.checkmark {
+  background-color: #3cbbb0;
+  border-color: #3cbbb0;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 13px;
+  top: 7px;
+  width: 7px;
+  height: 14px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#editor {
+  height: 100px;
+  border-color: grey;
+  margin-bottom: 10px;
+}
+
+#button1 {
+  margin-top: 1rem;
+  background-color: #451771;
+  color: white;
+}
+
+#button2 {
+  margin-top: 1rem;
+}
+
+.space-between { 
+  justify-content: space-between; 
+}  
+
+.flex-item {
+  /* padding: 12px; */
+  width: 100px; 
+  text-align: center;
+}
+

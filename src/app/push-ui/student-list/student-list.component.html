@@ -1,0 +1,53 @@
+<div class="container-fluid" >
+    <div id="search" class="row">
+        <input class=" col-sm-3 offset-sm-9 form-control form-control-lg  boder border-secondary"
+        [(ngModel)]="term" type="search" placeholder="Search" aria-label="Search">
+   </div>
+</div>
+
+<div class="container-fluid table-responsive" style="margin-bottom:-23px">
+  <table  id="table" class=" table table-fixed border border-secondary  table-borderless">
+    <thead class="flex-container space-between">
+    <tr  style="border: 1.5px solid grey; ">
+        <th class="flex-item"></th>
+        <th class="flex-item">User Name</th>
+        <th class="flex-item"></th>
+        <th class="flex-item"></th>
+        <th class="flex-item">Name</th>
+        <th class="flex-item"></th>
+        <th class="flex-item"></th>
+        <th class="flex-item">Subscription</th>
+        </tr>
+      </thead>
+  </table>
+</div>
+  <div id="table-data-id"class="container-fluid table-responsive  my-custom-scrollbar">
+    <table id="table" class="border border-secondary table table-responsive-sm table-borderless">
+    <tbody>
+      <tr style="border: 1.5px solid grey"
+       *ngFor="let student of lstStudent | filter:term ">
+        <td>
+          <label class="container">
+            <input type="checkbox" [checked]="student.isChecked"
+            [disabled]="!student.emailVerified"
+            (change)="FieldsChanged(student,$event)">
+            <span class="checkmark" ></span>
+          </label>
+        </td>
+        <td>{{ student.userName }}</td>
+        <td>{{ student.firstName }}</td>
+        <td>{{ student.emailVerified }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container-fluid" id="text-editor-id" style="margin-top:8px">
+  <div class="row justify-content-around">
+    <textarea id="editor" class="col-md-9 col-lg-9 col-xl-9 form-control " aria-label="With textarea"></textarea>
+    <div class="d-inline-flex flex-column col-md-2 col-xl-2 " style="margin-top:-22px">
+      <button id="button1" type=" button" class="btn btn-lg p-2" (click)="successmsg()">Send</button>
+      <button id="button2" type=" button" class="btn btn-lg btn-danger p-2" (click)="resetList()">Reset</button>
+    </div>
+  </div>
+</div>

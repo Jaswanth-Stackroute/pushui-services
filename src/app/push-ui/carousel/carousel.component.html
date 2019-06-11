@@ -1,0 +1,55 @@
+<div class="container-fluid" id="container-fluid">
+  <button class="btn btn-lg" id="selected-btn" (click)="showSelected()">View Selected</button>
+  <div [ngSwitch]="carouselDisplayMode">
+    <div *ngSwitchCase="'five'" class="slides-wrapper" id="carousel-container" ng2-carouselamos [width]="1000" [items]="lstBatch" [$item]="itemTemplate" [$prev]="prevTemplate" [$next]="nextTemplate"
+      (onSelectedItem)="selectedItem = $event.item; selectedIndex = $event.index">
+    </div>
+    <div *ngSwitchCase="'four'" class="slides-wrapper" id="carousel-container" ng2-carouselamos [width]="800" [items]="lstBatch" [$item]="itemTemplate" [$prev]="prevTemplate" [$next]="nextTemplate"
+      (onSelectedItem)="selectedItem = $event.item; selectedIndex = $event.index">
+    </div>
+    <div *ngSwitchCase="'three'" class="slides-wrapper" id="carousel-container" ng2-carouselamos [width]="600" [items]="lstBatch" [$item]="itemTemplate" [$prev]="prevTemplate" [$next]="nextTemplate"
+      (onSelectedItem)="selectedItem = $event.item; selectedIndex = $event.index">
+    </div>
+    <div *ngSwitchCase="'two'" class="slides-wrapper" id="carousel-container" ng2-carouselamos [width]="400" [items]="lstBatch" [$item]="itemTemplate" [$prev]="prevTemplate" [$next]="nextTemplate"
+      (onSelectedItem)="selectedItem = $event.item; selectedIndex = $event.index">
+    </div>
+    <div *ngSwitchCase="'one'" class="slides-wrapper" id="carousel-container" ng2-carouselamos [width]="200" [items]="lstBatch" [$item]="itemTemplate" [$prev]="prevTemplate" [$next]="nextTemplate"
+      (onSelectedItem)="selectedItem = $event.item; selectedIndex = $event.index">
+    </div>
+  </div>
+  <ng-template #prevTemplate>
+    <!-- <img src="assets/images/prev.png" /> -->
+    <a class="carousel-control-prev" id="prev-id">
+      <span class="carousel-control-prev-icon" style="background-color: black"></span>
+    </a>
+  </ng-template>
+
+  <ng-template #nextTemplate>
+    <a class="carousel-control-next" id="next-id">
+      <span class="carousel-control-next-icon" style="background-color: black"></span>
+    </a>
+  </ng-template>
+
+  <ng-template let-item let-i="index" #itemTemplate>
+    <div id="cards-carousel">
+      <div class="card " id="card" title="{{item.id}}" [style.background-color]=" item.id=== id? 'green' : 'white'">
+        <div class="row justify-content-around">
+          <label class="container col-4">
+            <input type="checkbox" [checked]="item.isChecked" (change)="selectedBatches(item,$event)" />
+            <span class="checkmark"></span>
+          </label>
+          <a class="container col-8" (click)="displayStudentList($event,item)" id="a-count">
+            <h1 class=" badge" id="student-count-id" >{{item.count}} </h1>
+          </a>
+        </div>
+        <a class="row" (click)="displayStudentList($event,item)">
+          <h5 class="container-fluid" id="batch-id">{{item.id.substr(item.id.length-4)}}</h5>
+        </a>
+        <a class="row" (click)="displayStudentList($event,item)">
+          <h5 class=" col-9" id="batch-name" >Batch</h5>
+          <app-card-component class="col-3" [batch]="item" id="card-com"></app-card-component>
+        </a>
+      </div>
+    </div>
+  </ng-template>
+</div>
