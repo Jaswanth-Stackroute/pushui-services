@@ -22,7 +22,6 @@ export class StudentListComponent implements OnInit, OnDestroy {
   private lstStudent: IStudent[] = [];
   private sltStudent: IStudent[] = [];
   private unsltStudent = [];
-  private removedIndex = [];
   private subscription: Subscription;
   constructor(private _studentService: StudentService,
     private _viewSelectedService: ViewSelectedService,
@@ -99,20 +98,13 @@ export class StudentListComponent implements OnInit, OnDestroy {
     else {
       this.unsltStudent = Object.values(data.type);
       console.log("unSelected:", this.unsltStudent);
-      this.sltStudent.forEach((ele, index) => {
+      this.sltStudent.forEach(ele => {
         this.unsltStudent.forEach(id => {
-          if (id === ele.id) {
+          if (id === ele.id)
             ele.isChecked = false;
-            this.removedIndex.push(index);
-          }
         })
       });
-
-      this.removedIndex.forEach(i => {
-        delete this.sltStudent[i]
-      });
-      this.sltStudent = this.sltStudent.filter(Boolean);
-      this.removedIndex = [];
+      this.sltStudent = this.sltStudent.filter( ele => ele.isChecked === true);
       this.compareSelection();
     }
     console.log("inside viewSelectedChecked:", this.sltStudent);
