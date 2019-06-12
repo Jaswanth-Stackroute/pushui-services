@@ -51,7 +51,7 @@ export class CarouselComponent implements OnInit {
     //service to get data from the selected students in student list
     this._viewSelectedService.currentdata
       .subscribe(data => { this.selectedStudents = data; this.selection() });
-
+      
   }
   //method to sort and store batches data
   push(data: any) {
@@ -103,25 +103,17 @@ export class CarouselComponent implements OnInit {
       this._viewSelectedService.currentdata
         .subscribe(data => { this.selectedStudents = data; this.selection() });
         
-      // this.id = batch.id;
-      // batch.isChecked = false;
-      // delete this.selBatches[batch.id];
-      // if (Object.keys(this.selBatches).length > 1){
-      // this._messageService.broadcast(Object.keys(batch.participant), this.selBatches);
-      // }
-      // else{
-      //    this._viewSelectedService.defaultFirstBatch(batch);
-      // }
-      // this._viewSelectedService.currentdata
-      //   .subscribe(data => { this.selectedStudents = data; this.selection() });
+    
     }
   }
 
+  //on clicking view selected button this method is called
   showSelected() {
     this._viewSelectedService.afterSelected(this.selectedStudents);
     //console.log(this.temp);
   }
 
+  //on clicking on card this method is called
   displayStudentList(event: any, batch: IBatch) {
     if (event.currentTarget || batch.participant != null) {
       this.id = batch.id;
@@ -134,7 +126,7 @@ export class CarouselComponent implements OnInit {
     }
   }
 
-  //resizing
+  //spliting the cards based on window size
   @HostListener('window:resize')
   onWindowResize() {
     if (window.innerWidth <= this.CAROUSEL_BREAKPOINT1 && window.innerWidth >= this.CAROUSEL_BREAKPOINT2) {
