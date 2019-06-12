@@ -19,14 +19,16 @@ export class StudentListComponent implements OnInit, OnDestroy {
     }
   };
   _url: string = 'user/v1/search';
-  private lstStudent: IStudent[] = [];
+  lstStudent: IStudent[] = [];
   private sltStudent: IStudent[] = [];
   private unsltStudent = [];
   private subscription: Subscription;
+  private firstBatch:any;
+  term:any;
+
   constructor(private _studentService: StudentService,
     private _viewSelectedService: ViewSelectedService,
     private messageService: MessageService) { }
-    private firstBatch:any;
   ngOnInit() {
     this._viewSelectedService.defaultBatch
       .subscribe(response => {
