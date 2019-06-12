@@ -125,12 +125,17 @@ button.link:focus {
   height: 50px;
   margin: 0;
 }
-#batch-id:hover{
-cursor: pointer;
+
+#batch-id:hover {
+  cursor: pointer;
 }
-#a-count{
-  margin-right: 0px;padding-right: 0px; margin-left: 35px;
+
+#a-count {
+  margin-right: 0px;
+  padding-right: 0px;
+  margin-left: 35px;
 }
+
 #student-count-id {
   text-align: right;
   width: 100%;
@@ -146,21 +151,27 @@ button.link {
 button.link:focus {
   outline: 0;
 }
-label{
-  padding-right: 0px; 
-   margin-bottom: 0px; 
-    margin-left: 10px;
+
+label {
+  padding-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 10px;
 }
 
-#batch-name{
+#batch-name {
   margin-bottom: 0px;
 }
-#batch-name:hover{
+
+#batch-name:hover {
   cursor: pointer;
-  }
-#card-com{
-  margin-bottom: 0px;padding-left: 5px;
 }
-#card-com:hover{
+
+#card-com {
+  margin-bottom: 0px;
+  padding-left: 5px;
+  font-size: 18px;
+}
+
+#card-com:hover {
   cursor: pointer;
-  }
+}

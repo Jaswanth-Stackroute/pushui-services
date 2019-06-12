@@ -18,7 +18,6 @@
     </div>
   </div>
   <ng-template #prevTemplate>
-    <!-- <img src="assets/images/prev.png" /> -->
     <a class="carousel-control-prev" id="prev-id">
       <span class="carousel-control-prev-icon" style="background-color: black"></span>
     </a>
@@ -39,15 +38,15 @@
             <span class="checkmark"></span>
           </label>
           <a class="container col-8" (click)="displayStudentList($event,item)" id="a-count">
-            <h1 class=" badge" id="student-count-id" >{{item.count}} </h1>
+            <h1 class=" badge" id="student-count-id">{{item.count}} </h1>
           </a>
         </div>
         <a class="row" (click)="displayStudentList($event,item)">
           <h5 class="container-fluid" id="batch-id">{{item.id.substr(item.id.length-4)}}</h5>
         </a>
         <a class="row" (click)="displayStudentList($event,item)">
-          <h5 class=" col-9" id="batch-name" >Batch</h5>
-          <app-card-component class="col-3" [batch]="item" id="card-com"></app-card-component>
+          <h5 class=" col-9" id="batch-name">Batch</h5>
+          <h1 class="badge col-3" id="card-com">{{batchStudentCount(item)}}</h1>
         </a>
       </div>
     </div>

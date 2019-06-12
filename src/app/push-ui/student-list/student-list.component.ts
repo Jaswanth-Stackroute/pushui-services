@@ -5,7 +5,6 @@ import { ViewSelectedService } from '../ViewSelected.service';
 import { MessageService } from '../message.service';
 import { Subscription } from 'rxjs';
 import { IMessage } from '../message';
-import { IBatch } from '../batch';
 @Component({
   selector: 'app-student-list',
   templateUrl: './student-list.component.html',
@@ -28,7 +27,7 @@ export class StudentListComponent implements OnInit, OnDestroy {
   constructor(private _studentService: StudentService,
     private _viewSelectedService: ViewSelectedService,
     private messageService: MessageService) { }
-    private firstBatch;
+    private firstBatch:any;
   ngOnInit() {
     this._viewSelectedService.defaultBatch
       .subscribe(response => {
@@ -63,7 +62,7 @@ export class StudentListComponent implements OnInit, OnDestroy {
         // console.log("first students:",response);
       });
   }
-  
+
   // Appending users per Batch to Body for API request
   subscribeToApi(user: IMessage) {
     let userList = [];

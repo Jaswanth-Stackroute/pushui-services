@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
 import { NgModule } from '@angular/core';
 import { AppPushUiComponent } from '../push-ui/app-push-ui/app-push-ui.component';
-import { CardComponentComponent } from '../push-ui/card-component/card-component.component';
 import { CarouselComponent } from '../push-ui/carousel/carousel.component';
 import { HeaderComponent } from '../push-ui/header/header.component';
 import { StudentListComponent } from '../push-ui/student-list/student-list.component';
@@ -16,7 +15,6 @@ import { ApiInterceptor } from './push.interceptor';
 @NgModule({
   declarations: [
     AppPushUiComponent,
-    CardComponentComponent,
     CarouselComponent,
     HeaderComponent,
     StudentListComponent,
@@ -31,7 +29,6 @@ import { ApiInterceptor } from './push.interceptor';
     Ng2SearchPipeModule,
   ],
   exports:[
-    CardComponentComponent,
     CarouselComponent,
     HeaderComponent,
     StudentListComponent,

@@ -16,7 +16,6 @@ export class CarouselComponent implements OnInit {
   @Input() ngSwitch: any;
   private lstBatch: IBatch[] = [];
   private selBatches = {};
-  private countParticipants;
   private selectedStudents: IStudent[] = [];
   private id: any;
   CAROUSEL_BREAKPOINT1 = 1086;
@@ -51,7 +50,7 @@ export class CarouselComponent implements OnInit {
     //service to get data from the selected students in student list
     this._viewSelectedService.currentdata
       .subscribe(data => { this.selectedStudents = data; this.selection() });
-      
+
   }
   //method to sort and store batches data
   push(data: any) {
@@ -71,6 +70,7 @@ export class CarouselComponent implements OnInit {
 
     }).reverse();
     this._viewSelectedService.defaultFirstBatch(this.lstBatch[0]);
+    this.id=this.lstBatch[0].id;
     this._viewSelectedService.currentdata
       .subscribe(data => { this.selectedStudents = data; this.selection() });
   }
@@ -86,24 +86,20 @@ export class CarouselComponent implements OnInit {
     if (values.currentTarget.checked && batch.participant != null) {
       this.id = batch.id;
       // console.log(Object.keys(batch.participant));
-
       this.selBatches[batch.id] = Object.keys(batch.participant);
       batch.isChecked = true;
       // console.log("participents",this.selBatches);
       this._messageService.broadcast("check", this.selBatches);
-
       //console.log( "selected batch:",this.selBatch);
     }
     else if (!values.currentTarget.checked && batch.participant != null) {
-      this.id = batch.id;
+      this.id=this.lstBatch[0].id;
       batch.isChecked = false;
       // if (Object.keys(this.selBatches).length > 1)
-        delete this.selBatches[batch.id];
+      delete this.selBatches[batch.id];
       this._messageService.broadcast(Object.keys(batch.participant), this.selBatches);
       this._viewSelectedService.currentdata
         .subscribe(data => { this.selectedStudents = data; this.selection() });
-        
-    
     }
   }
 
@@ -123,6 +119,15 @@ export class CarouselComponent implements OnInit {
       this._messageService.broadcast("onlyBatch", selectedCards);
       selectedCards = {};
       //console.log( "selected batch based on id:",this.selBatches);
+    }
+  }
+  // to get number of students in each batch
+  batchStudentCount(batch: IBatch): any {
+    if (batch.hasOwnProperty('participant')) {
+      return Object.values(batch.participant).length;
+    }
+    else {
+      return 0;
     }
   }
 
